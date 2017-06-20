@@ -10,6 +10,13 @@ export function fetchWeather(city){
     const url = `${ROOT_URL}&q=${city},us`;
     const request = axios.get(url);
 
+    // debug
+    console.log('Request:', request);
+
+    // return the 'promise'
+    // the redux-promise middleware will notice this payload as a 'promise' before sent to reducer
+    // So the middleware will un-wrap the request, take out the object, then create a same action and send it to reducer
+    // except the request (promise) is changed(unwrapped) to objects
     return {
         type: FETCH_WEATHER,
         payload: request

@@ -9,7 +9,9 @@ import reducers from './reducers';
 
 // middleware is like a gatekeeper
 // it works after an action is created but before sent to all reducers
-// it will help us handle ajax request
+// it will help us handle request 'promise'
+// when action's payload is a promise, middleware will handle (unwrap) it before passed to reducer
+// it will pass a same action but with unwrapped object as payload, so the reducer can directly handle it
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
